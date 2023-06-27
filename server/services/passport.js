@@ -43,15 +43,26 @@ const jwtOptions = {
 
 passport.use(
   new JwtStrategy(jwtOptions, function (payload, done) {
-    User.findById(payload.id, function (err, user) {
-      if (err) {
+    // User.findById(payload.id, function (err, user) {
+    //   if (err) {
+    //     return done(err, false);
+    //   }
+    //   if (user) {
+    //     done(null, user);
+    //   } else {
+    //     done(null, false);
+    //   }
+    // });
+    User.findById(payload.id)
+      .then((user) => {
+        if (user) {
+          done(null, user);
+        } else {
+          done(null, false);
+        }
+      })
+      .catch((err) => {
         return done(err, false);
-      }
-      if (user) {
-        done(null, user);
-      } else {
-        done(null, false);
-      }
-    });
+      });
   })
 );

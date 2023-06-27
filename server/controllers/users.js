@@ -12,7 +12,6 @@ exports.getUsers = async function (req, res) {
 
 exports.getCurrentUser = function (req, res) {
   const user = req.user;
-    console.log('user', user)
   if (!user) {
     return res.status(422);
   }
