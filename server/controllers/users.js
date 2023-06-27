@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Beehive = require("../models/beehive");
 const passport = require("passport");
 
 exports.getUsers = async function (req, res) {
@@ -95,3 +96,14 @@ exports.logout = function (req, res) {
   req.logout();
   return res.json({ status: "Session destroyed." });
 };
+
+
+exports.getUserBeehives = async function (req, res) {
+  try {
+      const user = req.user;
+      const beehives = await Beehive.find({user: user._id})
+      return res.json(beehives)
+  } catch (err) {
+      console.log(err.message)
+  }
+} 

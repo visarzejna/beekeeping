@@ -8,6 +8,8 @@ router.get('/getUsers', UserCtrl.getUsers)
 
 router.get('/me',AuthCtrl.onlyAuthUser, UserCtrl.getCurrentUser);
 
+router.get('/beehives', AuthCtrl.onlyAuthUser, UserCtrl.getUserBeehives);
+
 router.post('/register', UserCtrl.register);
 
 router.post('/login', UserCtrl.login)

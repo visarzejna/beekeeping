@@ -5,7 +5,7 @@ const beehiveSchema = new Schema({
     name: {type: String, required: true},
     info: {type: String, required: true},
     createdAt: {type: Date, default: Date.now},
-    user: [{type: Schema.Types.ObjectId, ref: 'User'}]
+    user: {type: Schema.Types.ObjectId, ref: 'User'}
 })
 
 beehiveSchema.post('remove', removeInspections);
