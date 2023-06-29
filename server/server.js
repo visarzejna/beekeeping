@@ -3,13 +3,14 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 require('dotenv').config()
 
-require('./models/user')
-require('./models/beehive')
+// require('./models/user')
+// require('./models/beehive')
 
 require('./services/passport')
 
 const userRoutes = require('./routes/users')
 const beehiveRoutes = require('./routes/beehives')
+const inspectionRoutes = require('./routes/inspections')
 
 mongoose.connect(process.env.DB_URI)
     .then(() => console.log('Db Connected!'))
@@ -21,6 +22,7 @@ app.use(bodyParser.json())
 
 app.use('/api/v1', userRoutes)
 app.use('/api/v1/beehive', beehiveRoutes)
+app.use('/api/v1/inspection', inspectionRoutes)
 
 app.listen(5000, () => {
     console.log('Server Started on port 5000')

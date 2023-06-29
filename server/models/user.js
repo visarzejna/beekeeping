@@ -30,7 +30,7 @@ const userSchema = new Schema({
   },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
-  beehives: [{ type: Schema.Types.ObjectId, ref: "Beehive" }],
+  // beehives: [{ type: Schema.Types.ObjectId, ref: "Beehive" }],
 })
 
 async function removeMeetups(user, next) {
